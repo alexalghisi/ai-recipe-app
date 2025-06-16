@@ -1,0 +1,141 @@
+/* Reset simplu */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f9fafb;
+    color: #111;
+    min-height: 100%;
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background: #4f46e5;
+    padding: 1rem 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.main {
+    flex: 1;
+    width: 100%;
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Formular */
+.recipe-form {
+    display: grid;
+    gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.input,
+.select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font: inherit;
+}
+
+.button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button.primary {
+    background: #4f46e5;
+    color: #fff;
+}
+
+/* Liste și carduri */
+.placeholder {
+    text-align: center;
+    color: #6b7280;
+    margin-top: 2rem;
+}
+
+.recipe-list {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.recipe-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.recipe-body {
+    padding: 1rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.recipe-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.recipe-list-bullets,
+.recipe-list-steps {
+    margin-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.recipe-list-steps {
+    list-style-type: decimal;
+}
+
+.navbar {
+    background: #4f46e5;
+    padding: 1rem;
+}

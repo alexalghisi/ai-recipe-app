@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Search, Heart, ChefHat, Loader2 } from 'lucide-react';
 import { RecipeCard, RecipeDetail } from './components';
 import { useFavorites } from './hooks';
-import { recipeAPI } from './services'; // Changed this line
+import { recipeAPI } from './services';
+import './styles/App.css';
 
 const App = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -10,7 +11,7 @@ const App = () => {
     const [selectedRecipe, setSelectedRecipe] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('search');
-    const [apiStatus, setApiStatus] = useState(''); // New state for API status
+    const [apiStatus, setApiStatus] = useState('');
     const { favorites, addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
     // Load popular recipes on initial mount
@@ -70,40 +71,31 @@ const App = () => {
     const displayedRecipes = activeTab === 'search' ? recipes : favorites;
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="app-container">
             {/* Header */}
-            <header className="bg-white shadow-sm border-b">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
-                        <div className="flex items-center gap-3">
-                            <ChefHat className="w-8 h-8 text-blue-600" />
-                            <h1 className="text-xl font-bold text-gray-900">AI Recipe Finder</h1>
-                            {/* API Status Indicator */}
-                            <span className="text-xs bg-gray-100 px-2 py-1 rounded-full">
-                {apiStatus}
-              </span>
+            <header className="app-header">
+                <div className="header-content">
+                    <div className="header-left">
+                        <div className="logo-section">
+                            <ChefHat className="logo-icon" />
+                            <h1 className="app-title">AI Recipe Finder</h1>
+                            <span className="api-status">
+                                {apiStatus}
+                            </span>
                         </div>
 
-                        <nav className="flex items-center gap-1">
+                        <nav className="nav-section">
                             <button
                                 onClick={() => setActiveTab('search')}
-                                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                                    activeTab === 'search'
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:text-gray-900'
-                                }`}
+                                className={`nav-button ${activeTab === 'search' ? 'nav-button-active' : ''}`}
                             >
                                 Search
                             </button>
                             <button
                                 onClick={() => setActiveTab('favorites')}
-                                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
-                                    activeTab === 'favorites'
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:text-gray-900'
-                                }`}
+                                className={`nav-button ${activeTab === 'favorites' ? 'nav-button-active' : ''}`}
                             >
-                                <Heart className="w-4 h-4" />
+                                <Heart className="nav-heart-icon" />
                                 Favorites ({favorites.length})
                             </button>
                         </nav>
@@ -112,18 +104,18 @@ const App = () => {
             </header>
 
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <main className="main-content">
                 {activeTab === 'search' && (
-                    <div className="mb-8">
-                        <div className="text-center mb-8">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    <div className="search-section">
+                        <div className="search-intro">
+                            <h2 className="search-title">
                                 What would you like to cook today?
                             </h2>
-                            <p className="text-gray-600 max-w-2xl mx-auto mb-4">
+                            <p className="search-description">
                                 🤖 Powered by ChatGPT AI - Describe what you're craving and get personalized recipes generated just for you!
                             </p>
-                            <div className="flex flex-wrap justify-center gap-2 text-sm">
-                                <span className="text-gray-500">Try:</span>
+                            <div className="search-suggestions">
+                                <span className="suggestions-label">Try:</span>
                                 {[
                                     'pizza margherita',
                                     'healthy breakfast',
@@ -135,7 +127,7 @@ const App = () => {
                                     <button
                                         key={index}
                                         onClick={() => setSearchQuery(suggestion)}
-                                        className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors"
+                                        className="suggestion-button"
                                     >
                                         "{suggestion}"
                                     </button>
@@ -143,25 +135,25 @@ const App = () => {
                             </div>
                         </div>
 
-                        <div className="max-w-2xl mx-auto mb-8">
-                            <div className="relative">
+                        <div className="search-input-container">
+                            <div className="search-input-wrapper">
                                 <input
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                     placeholder="Describe what you want to eat... (e.g., 'spicy Mexican tacos' or 'healthy breakfast bowl')"
-                                    className="w-full px-6 py-4 pr-14 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                                    className="search-input"
                                 />
                                 <button
                                     onClick={handleSearch}
                                     disabled={isLoading}
-                                    className="absolute right-2 top-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                                    className="search-button"
                                 >
                                     {isLoading ? (
-                                        <Loader2 className="w-6 h-6 animate-spin" />
+                                        <Loader2 className="search-icon loading" />
                                     ) : (
-                                        <Search className="w-6 h-6" />
+                                        <Search className="search-icon" />
                                     )}
                                 </button>
                             </div>
@@ -170,9 +162,9 @@ const App = () => {
                 )}
 
                 {activeTab === 'favorites' && (
-                    <div className="mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Your Favorite Recipes</h2>
-                        <p className="text-gray-600">
+                    <div className="favorites-section">
+                        <h2 className="favorites-title">Your Favorite Recipes</h2>
+                        <p className="favorites-description">
                             {favorites.length === 0
                                 ? "You haven't saved any recipes yet. Search for recipes and add them to your favorites!"
                                 : `You have ${favorites.length} favorite recipe${favorites.length !== 1 ? 's' : ''}.`
@@ -185,18 +177,18 @@ const App = () => {
                 {displayedRecipes.length > 0 && (
                     <>
                         {activeTab === 'search' && !searchQuery && (
-                            <div className="mb-6">
-                                <h3 className="text-2xl font-semibold text-gray-900 mb-2">AI Generated Recipes</h3>
-                                <p className="text-gray-600">Discover recipes created by AI, or search above for something specific.</p>
+                            <div className="results-header">
+                                <h3 className="results-title">AI Generated Recipes</h3>
+                                <p className="results-description">Discover recipes created by AI, or search above for something specific.</p>
                             </div>
                         )}
                         {activeTab === 'search' && searchQuery && (
-                            <div className="mb-6">
-                                <h3 className="text-2xl font-semibold text-gray-900 mb-2">AI Search Results</h3>
-                                <p className="text-gray-600">Found {displayedRecipes.length} AI-generated recipe{displayedRecipes.length !== 1 ? 's' : ''} for "{searchQuery}"</p>
+                            <div className="results-header">
+                                <h3 className="results-title">AI Search Results</h3>
+                                <p className="results-description">Found {displayedRecipes.length} AI-generated recipe{displayedRecipes.length !== 1 ? 's' : ''} for "{searchQuery}"</p>
                             </div>
                         )}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="recipe-grid">
                             {displayedRecipes.map((recipe) => (
                                 <RecipeCard
                                     key={recipe.id}
@@ -212,30 +204,30 @@ const App = () => {
 
                 {/* Loading State */}
                 {isLoading && (
-                    <div className="text-center py-12">
-                        <Loader2 className="w-16 h-16 text-blue-600 mx-auto mb-4 animate-spin" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">AI is creating recipes for you...</h3>
-                        <p className="text-gray-600">ChatGPT is analyzing your request and generating personalized recipes.</p>
+                    <div className="loading-state">
+                        <Loader2 className="loading-spinner" />
+                        <h3 className="loading-title">AI is creating recipes for you...</h3>
+                        <p className="loading-description">ChatGPT is analyzing your request and generating personalized recipes.</p>
                     </div>
                 )}
 
                 {/* Empty States */}
                 {activeTab === 'search' && recipes.length === 0 && !isLoading && searchQuery && (
-                    <div className="text-center py-12">
-                        <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">No recipes found</h3>
-                        <p className="text-gray-600">Try a different search term or browse our AI-generated recipes above.</p>
+                    <div className="empty-state">
+                        <Search className="empty-icon" />
+                        <h3 className="empty-title">No recipes found</h3>
+                        <p className="empty-description">Try a different search term or browse our AI-generated recipes above.</p>
                     </div>
                 )}
 
                 {activeTab === 'favorites' && favorites.length === 0 && (
-                    <div className="text-center py-12">
-                        <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">No favorites yet</h3>
-                        <p className="text-gray-600 mb-4">Start exploring AI-generated recipes and save your favorites!</p>
+                    <div className="empty-state">
+                        <Heart className="empty-icon" />
+                        <h3 className="empty-title">No favorites yet</h3>
+                        <p className="empty-description">Start exploring AI-generated recipes and save your favorites!</p>
                         <button
                             onClick={() => setActiveTab('search')}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            className="discover-button"
                         >
                             Discover Recipes
                         </button>
