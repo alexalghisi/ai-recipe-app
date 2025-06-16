@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Heart, Clock, Users, ChefHat, Star, Loader2 } from 'lucide-react';
 
-// Mock AI Recipe API Service
+// Enhanced Mock AI Recipe API Service
 const mockRecipeAPI = {
     searchRecipes: async (description) => {
         // Simulate API delay
@@ -187,10 +187,42 @@ const mockRecipeAPI = {
                     "Add remaining cheese, season, and garnish with parsley."
                 ]
             },
+            {
+                id: 7,
+                title: "Spaghetti Bolognese",
+                description: "Classic Italian meat sauce with slow-cooked beef and tomatoes",
+                image: "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400",
+                cookTime: "45 mins",
+                servings: 6,
+                difficulty: "Medium",
+                rating: 4.7,
+                tags: ["pasta", "italian", "bolognese", "meat sauce", "beef", "tomato", "comfort food"],
+                ingredients: [
+                    "500g spaghetti",
+                    "500g ground beef",
+                    "1 onion, diced",
+                    "2 carrots, diced",
+                    "2 celery stalks, diced",
+                    "400g crushed tomatoes",
+                    "200ml red wine",
+                    "2 tbsp tomato paste",
+                    "Bay leaves",
+                    "Fresh basil"
+                ],
+                instructions: [
+                    "Heat oil in a large pot, brown the ground beef.",
+                    "Add onion, carrots, and celery, cook until soft.",
+                    "Stir in tomato paste and cook for 2 minutes.",
+                    "Add wine and let it reduce by half.",
+                    "Add crushed tomatoes and bay leaves.",
+                    "Simmer for 30 minutes, stirring occasionally.",
+                    "Cook spaghetti and serve with the sauce."
+                ]
+            },
 
             // Asian Cuisine
             {
-                id: 7,
+                id: 8,
                 title: "Thai Green Curry",
                 description: "Aromatic coconut curry with vegetables and herbs",
                 image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400",
@@ -221,7 +253,7 @@ const mockRecipeAPI = {
                 ]
             },
             {
-                id: 8,
+                id: 9,
                 title: "Chicken Fried Rice",
                 description: "Quick and satisfying fried rice with chicken and vegetables",
                 image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400",
@@ -252,7 +284,7 @@ const mockRecipeAPI = {
                 ]
             },
             {
-                id: 9,
+                id: 10,
                 title: "Pad Thai",
                 description: "Sweet and tangy Thai stir-fried noodles with shrimp",
                 image: "https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400",
@@ -283,44 +315,72 @@ const mockRecipeAPI = {
                     "Garnish with peanuts and serve with lime wedges."
                 ]
             },
-
-            // Mexican Cuisine
             {
-                id: 10,
-                title: "Chicken Tacos",
-                description: "Flavorful grilled chicken tacos with fresh toppings",
-                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+                id: 11,
+                title: "Chicken Teriyaki",
+                description: "Japanese glazed chicken with sweet and savory teriyaki sauce",
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400",
+                cookTime: "25 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.5,
+                tags: ["japanese", "chicken", "teriyaki", "sweet", "asian", "grilled", "rice"],
+                ingredients: [
+                    "4 chicken thighs, boneless",
+                    "4 tbsp soy sauce",
+                    "3 tbsp mirin",
+                    "2 tbsp brown sugar",
+                    "1 tbsp rice vinegar",
+                    "2 cloves garlic, minced",
+                    "1 tsp ginger, grated",
+                    "1 tbsp vegetable oil",
+                    "Sesame seeds for garnish"
+                ],
+                instructions: [
+                    "Mix soy sauce, mirin, sugar, vinegar, garlic, and ginger for sauce.",
+                    "Heat oil in a large skillet over medium-high heat.",
+                    "Cook chicken skin-side down for 5-6 minutes until crispy.",
+                    "Flip chicken and cook another 4-5 minutes.",
+                    "Pour sauce over chicken and simmer until thickened.",
+                    "Turn chicken to coat in glaze.",
+                    "Garnish with sesame seeds and serve with steamed rice."
+                ]
+            },
+            {
+                id: 12,
+                title: "Beef and Broccoli",
+                description: "Classic Chinese stir-fry with tender beef and crisp broccoli",
+                image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400",
                 cookTime: "20 mins",
                 servings: 4,
                 difficulty: "Easy",
-                rating: 4.6,
-                tags: ["mexican", "tacos", "chicken", "quick", "fresh", "lime", "cilantro"],
+                rating: 4.4,
+                tags: ["chinese", "beef", "broccoli", "stir-fry", "asian", "quick", "vegetables"],
                 ingredients: [
-                    "500g chicken breast, sliced",
-                    "8 small corn tortillas",
-                    "1 tsp cumin",
-                    "1 tsp chili powder",
-                    "1 tsp paprika",
-                    "2 limes, juiced",
-                    "1 red onion, diced",
-                    "Fresh cilantro, chopped",
-                    "200g cheese, shredded",
-                    "2 tbsp olive oil"
+                    "500g beef sirloin, sliced thin",
+                    "500g broccoli, cut into florets",
+                    "3 tbsp soy sauce",
+                    "2 tbsp oyster sauce",
+                    "1 tbsp cornstarch",
+                    "2 cloves garlic, minced",
+                    "1 tbsp vegetable oil",
+                    "1 tsp sesame oil",
+                    "Steamed rice for serving"
                 ],
                 instructions: [
-                    "Season chicken with cumin, chili powder, paprika, salt, and pepper.",
-                    "Heat olive oil in a skillet over medium-high heat.",
-                    "Cook chicken for 6-8 minutes until golden and cooked through.",
-                    "Warm tortillas in a dry pan or microwave.",
-                    "Slice chicken and divide among tortillas.",
-                    "Top with diced onion, cilantro, and cheese.",
-                    "Serve with lime wedges and enjoy immediately."
+                    "Marinate beef with 1 tbsp soy sauce and cornstarch.",
+                    "Blanch broccoli in boiling water for 2 minutes, drain.",
+                    "Heat oil in a wok over high heat.",
+                    "Stir-fry beef until just cooked, remove from pan.",
+                    "Add garlic and broccoli, stir-fry for 2 minutes.",
+                    "Return beef to pan with remaining sauces.",
+                    "Toss everything together and serve over rice."
                 ]
             },
 
             // Indian Cuisine
             {
-                id: 11,
+                id: 13,
                 title: "Chicken Tikka Masala",
                 description: "Creamy Indian curry with tender chicken in tomato-based sauce",
                 image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400",
@@ -352,9 +412,43 @@ const mockRecipeAPI = {
                 ]
             },
 
+            // Mexican Cuisine
+            {
+                id: 14,
+                title: "Chicken Tacos",
+                description: "Flavorful grilled chicken tacos with fresh toppings",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.6,
+                tags: ["mexican", "tacos", "chicken", "quick", "fresh", "lime", "cilantro"],
+                ingredients: [
+                    "500g chicken breast, sliced",
+                    "8 small corn tortillas",
+                    "1 tsp cumin",
+                    "1 tsp chili powder",
+                    "1 tsp paprika",
+                    "2 limes, juiced",
+                    "1 red onion, diced",
+                    "Fresh cilantro, chopped",
+                    "200g cheese, shredded",
+                    "2 tbsp olive oil"
+                ],
+                instructions: [
+                    "Season chicken with cumin, chili powder, paprika, salt, and pepper.",
+                    "Heat olive oil in a skillet over medium-high heat.",
+                    "Cook chicken for 6-8 minutes until golden and cooked through.",
+                    "Warm tortillas in a dry pan or microwave.",
+                    "Slice chicken and divide among tortillas.",
+                    "Top with diced onion, cilantro, and cheese.",
+                    "Serve with lime wedges and enjoy immediately."
+                ]
+            },
+
             // Breakfast
             {
-                id: 12,
+                id: 15,
                 title: "Fluffy Pancakes",
                 description: "Light and airy pancakes perfect for weekend breakfast",
                 image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400",
@@ -384,10 +478,40 @@ const mockRecipeAPI = {
                     "Serve hot with maple syrup and butter."
                 ]
             },
+            {
+                id: 16,
+                title: "Avocado Toast",
+                description: "Healthy and trendy breakfast with mashed avocado on toasted bread",
+                image: "https://images.unsplash.com/photo-1603252109360-909baaf261c7?w=400",
+                cookTime: "10 mins",
+                servings: 2,
+                difficulty: "Easy",
+                rating: 4.3,
+                tags: ["breakfast", "healthy", "avocado", "toast", "vegetarian", "quick"],
+                ingredients: [
+                    "2 slices whole grain bread",
+                    "1 ripe avocado",
+                    "1 tbsp lime juice",
+                    "Salt and pepper to taste",
+                    "Red pepper flakes",
+                    "2 eggs (optional)",
+                    "Cherry tomatoes",
+                    "Olive oil drizzle"
+                ],
+                instructions: [
+                    "Toast bread slices until golden brown.",
+                    "Mash avocado with lime juice, salt, and pepper.",
+                    "Spread avocado mixture evenly on toast.",
+                    "Top with cherry tomatoes and red pepper flakes.",
+                    "Drizzle with olive oil.",
+                    "Add a fried or poached egg on top if desired.",
+                    "Serve immediately while toast is still warm."
+                ]
+            },
 
             // Seafood
             {
-                id: 13,
+                id: 17,
                 title: "Grilled Salmon",
                 description: "Perfectly grilled salmon with lemon and herbs",
                 image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400",
@@ -419,7 +543,7 @@ const mockRecipeAPI = {
 
             // Burgers
             {
-                id: 14,
+                id: 18,
                 title: "Classic Beef Burger",
                 description: "Juicy beef burger with fresh toppings and special sauce",
                 image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
@@ -450,9 +574,43 @@ const mockRecipeAPI = {
                 ]
             },
 
+            // Soups
+            {
+                id: 19,
+                title: "Chicken Noodle Soup",
+                description: "Comforting homemade soup with chicken, vegetables, and noodles",
+                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400",
+                cookTime: "45 mins",
+                servings: 6,
+                difficulty: "Easy",
+                rating: 4.8,
+                tags: ["soup", "chicken", "noodles", "comfort food", "vegetables", "healthy"],
+                ingredients: [
+                    "500g chicken breast",
+                    "200g egg noodles",
+                    "2 carrots, diced",
+                    "2 celery stalks, diced",
+                    "1 onion, diced",
+                    "2 cloves garlic, minced",
+                    "1.5L chicken broth",
+                    "2 bay leaves",
+                    "Fresh thyme",
+                    "Salt and pepper"
+                ],
+                instructions: [
+                    "Cook chicken in broth until tender, about 20 minutes.",
+                    "Remove chicken, shred when cool, and strain broth.",
+                    "Sauté vegetables in a large pot until soft.",
+                    "Add broth, bay leaves, and thyme, bring to a boil.",
+                    "Add noodles and cook according to package directions.",
+                    "Return shredded chicken to pot.",
+                    "Season with salt and pepper, serve hot."
+                ]
+            },
+
             // Desserts
             {
-                id: 15,
+                id: 20,
                 title: "Chocolate Lava Cake",
                 description: "Decadent dessert with molten chocolate center",
                 image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
@@ -480,30 +638,130 @@ const mockRecipeAPI = {
                     "Divide between ramekins and bake for 12-14 minutes.",
                     "Let stand for 1 minute, then turn out onto plates and serve immediately."
                 ]
+            },
+            {
+                id: 21,
+                title: "Classic Tiramisu",
+                description: "Italian coffee-flavored dessert with mascarpone and cocoa",
+                image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400",
+                cookTime: "30 mins (+ 4h chill)",
+                servings: 8,
+                difficulty: "Medium",
+                rating: 4.8,
+                tags: ["dessert", "italian", "coffee", "mascarpone", "sweet", "no-bake"],
+                ingredients: [
+                    "6 egg yolks",
+                    "75g sugar",
+                    "500g mascarpone cheese",
+                    "300ml strong coffee, cooled",
+                    "3 tbsp coffee liqueur",
+                    "2 packets ladyfinger biscuits",
+                    "Cocoa powder for dusting",
+                    "Dark chocolate for shaving"
+                ],
+                instructions: [
+                    "Whisk egg yolks and sugar until thick and pale.",
+                    "Add mascarpone and mix until smooth.",
+                    "Combine coffee and liqueur in a shallow dish.",
+                    "Quickly dip each ladyfinger in coffee mixture and layer in dish.",
+                    "Spread half the mascarpone mixture over biscuits.",
+                    "Repeat with another layer of dipped biscuits and remaining mascarpone.",
+                    "Refrigerate for at least 4 hours or overnight.",
+                    "Before serving, dust with cocoa powder and chocolate shavings."
+                ]
             }
         ];
 
-        // Simple keyword matching to simulate AI
-        const keywords = description.toLowerCase();
-        let filteredRecipes = allRecipes;
+        // Enhanced AI-like search algorithm
+        const searchTerms = description.toLowerCase().trim();
 
-        if (keywords.includes('pasta') || keywords.includes('italian')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('pasta') || r.tags.includes('italian'));
-        } else if (keywords.includes('curry') || keywords.includes('thai') || keywords.includes('spicy')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('curry') || r.tags.includes('thai') || r.tags.includes('spicy'));
-        } else if (keywords.includes('dessert') || keywords.includes('chocolate') || keywords.includes('sweet')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('dessert') || r.tags.includes('chocolate') || r.tags.includes('sweet'));
-        } else if (keywords.includes('pizza')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('pizza'));
-        } else if (keywords.includes('mexican')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('mexican'));
-        } else if (keywords.includes('breakfast')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('breakfast'));
-        } else if (keywords.includes('seafood') || keywords.includes('fish')) {
-            filteredRecipes = allRecipes.filter(r => r.tags.includes('seafood') || r.tags.includes('salmon'));
+        if (!searchTerms) return allRecipes.slice(0, 6);
+
+        // Score each recipe based on relevance
+        const scoredRecipes = allRecipes.map(recipe => {
+            let score = 0;
+            const searchWords = searchTerms.split(/\s+/);
+
+            // Check title (high weight)
+            searchWords.forEach(word => {
+                if (recipe.title.toLowerCase().includes(word)) {
+                    score += 10;
+                }
+            });
+
+            // Check tags (high weight)
+            searchWords.forEach(word => {
+                recipe.tags.forEach(tag => {
+                    if (tag.includes(word) || word.includes(tag)) {
+                        score += 8;
+                    }
+                });
+            });
+
+            // Check description (medium weight)
+            searchWords.forEach(word => {
+                if (recipe.description.toLowerCase().includes(word)) {
+                    score += 5;
+                }
+            });
+
+            // Check ingredients (lower weight)
+            searchWords.forEach(word => {
+                recipe.ingredients.forEach(ingredient => {
+                    if (ingredient.toLowerCase().includes(word)) {
+                        score += 2;
+                    }
+                });
+            });
+
+            // Bonus for exact tag matches
+            if (recipe.tags.some(tag => searchTerms.includes(tag))) {
+                score += 15;
+            }
+
+            // Bonus for difficulty preference
+            if (searchTerms.includes('easy') || searchTerms.includes('quick') || searchTerms.includes('simple')) {
+                if (recipe.difficulty === 'Easy') score += 5;
+            }
+            if (searchTerms.includes('advanced') || searchTerms.includes('complex') || searchTerms.includes('challenging')) {
+                if (recipe.difficulty === 'Hard') score += 5;
+            }
+
+            // Cuisine-specific bonuses
+            const cuisineMap = {
+                'italian': ['italian'],
+                'asian': ['thai', 'chinese', 'asian'],
+                'mexican': ['mexican'],
+                'american': ['american'],
+                'indian': ['indian'],
+                'mediterranean': ['mediterranean']
+            };
+
+            Object.entries(cuisineMap).forEach(([cuisine, tags]) => {
+                if (searchTerms.includes(cuisine)) {
+                    tags.forEach(tag => {
+                        if (recipe.tags.includes(tag)) score += 12;
+                    });
+                }
+            });
+
+            return { ...recipe, searchScore: score };
+        });
+
+        // Filter and sort by relevance
+        const relevantRecipes = scoredRecipes
+            .filter(recipe => recipe.searchScore > 0)
+            .sort((a, b) => b.searchScore - a.searchScore);
+
+        // If no relevant recipes found, return popular recipes
+        if (relevantRecipes.length === 0) {
+            return allRecipes
+                .sort((a, b) => b.rating - a.rating)
+                .slice(0, 6);
         }
 
-        return filteredRecipes.length > 0 ? filteredRecipes.slice(0, 6) : allRecipes.slice(0, 6);
+        // Return top 6 most relevant recipes
+        return relevantRecipes.slice(0, 6);
     }
 };
 
