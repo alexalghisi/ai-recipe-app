@@ -7,7 +7,8 @@ const mockRecipeAPI = {
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 1500));
 
-        const recipes = [
+        const allRecipes = [
+            // Pizza Recipes
             {
                 id: 1,
                 title: "Classic Margherita Pizza",
@@ -17,6 +18,7 @@ const mockRecipeAPI = {
                 servings: 4,
                 difficulty: "Medium",
                 rating: 4.7,
+                tags: ["pizza", "italian", "cheese", "tomato", "basil", "vegetarian", "margherita"],
                 ingredients: [
                     "1 pizza dough ball",
                     "200ml pizza sauce",
@@ -38,6 +40,157 @@ const mockRecipeAPI = {
             },
             {
                 id: 2,
+                title: "Pepperoni Pizza",
+                description: "Classic American-style pizza loaded with pepperoni and cheese",
+                image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
+                cookTime: "25 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.8,
+                tags: ["pizza", "pepperoni", "cheese", "american", "meat", "comfort food"],
+                ingredients: [
+                    "1 pizza dough ball",
+                    "200ml pizza sauce",
+                    "250g mozzarella cheese, shredded",
+                    "80g pepperoni slices",
+                    "1 tsp oregano",
+                    "1 tbsp olive oil"
+                ],
+                instructions: [
+                    "Preheat oven to 230°C.",
+                    "Roll out pizza dough and place on greased baking sheet.",
+                    "Spread pizza sauce evenly over dough.",
+                    "Sprinkle mozzarella cheese over sauce.",
+                    "Arrange pepperoni slices on top.",
+                    "Sprinkle with oregano and drizzle with olive oil.",
+                    "Bake for 15-18 minutes until cheese is bubbly and crust is golden."
+                ]
+            },
+            {
+                id: 3,
+                title: "Veggie Supreme Pizza",
+                description: "Colorful pizza loaded with fresh vegetables and herbs",
+                image: "https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?w=400",
+                cookTime: "35 mins",
+                servings: 4,
+                difficulty: "Medium",
+                rating: 4.5,
+                tags: ["pizza", "vegetarian", "vegetables", "bell peppers", "mushrooms", "healthy"],
+                ingredients: [
+                    "1 pizza dough ball",
+                    "200ml pizza sauce",
+                    "200g mozzarella cheese",
+                    "1 bell pepper, sliced",
+                    "100g mushrooms, sliced",
+                    "1 red onion, sliced",
+                    "50g olives",
+                    "2 tbsp olive oil"
+                ],
+                instructions: [
+                    "Preheat oven to 230°C.",
+                    "Roll out pizza dough and place on baking sheet.",
+                    "Spread sauce and sprinkle cheese.",
+                    "Arrange vegetables evenly on top.",
+                    "Drizzle with olive oil.",
+                    "Bake for 18-20 minutes until crust is golden.",
+                    "Let cool for 2 minutes before slicing."
+                ]
+            },
+
+            // Pasta Recipes
+            {
+                id: 4,
+                title: "Classic Spaghetti Carbonara",
+                description: "Creamy pasta dish with eggs, cheese, and pancetta",
+                image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Medium",
+                rating: 4.8,
+                tags: ["pasta", "italian", "carbonara", "eggs", "cheese", "pancetta", "creamy"],
+                ingredients: [
+                    "400g spaghetti",
+                    "200g pancetta, diced",
+                    "4 large eggs",
+                    "100g Pecorino Romano cheese, grated",
+                    "50g Parmesan cheese, grated",
+                    "2 cloves garlic, minced",
+                    "Black pepper to taste",
+                    "Salt for pasta water"
+                ],
+                instructions: [
+                    "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
+                    "While pasta cooks, fry pancetta in a large skillet until crispy.",
+                    "In a bowl, whisk together eggs, both cheeses, and black pepper.",
+                    "Drain pasta, reserving 1 cup pasta water.",
+                    "Add hot pasta to the skillet with pancetta.",
+                    "Remove from heat and quickly mix in egg mixture, adding pasta water gradually.",
+                    "Toss until creamy and serve immediately with extra cheese."
+                ]
+            },
+            {
+                id: 5,
+                title: "Penne Arrabbiata",
+                description: "Spicy Italian pasta with tomatoes, garlic, and red peppers",
+                image: "https://images.unsplash.com/photo-1621996346565-e3dbc1d2c5c6?w=400",
+                cookTime: "25 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.5,
+                tags: ["pasta", "italian", "spicy", "tomato", "garlic", "peppers", "arrabbiata", "vegetarian"],
+                ingredients: [
+                    "400g penne pasta",
+                    "400g canned tomatoes, crushed",
+                    "4 cloves garlic, sliced",
+                    "2 dried red chilies",
+                    "60ml olive oil",
+                    "Salt and pepper",
+                    "Fresh parsley, chopped",
+                    "Parmesan cheese for serving"
+                ],
+                instructions: [
+                    "Cook penne according to package instructions until al dente.",
+                    "Heat olive oil in a large pan over medium heat.",
+                    "Add garlic and red chilies, cook for 1 minute until fragrant.",
+                    "Add crushed tomatoes, season with salt and pepper.",
+                    "Simmer for 10-15 minutes until sauce thickens.",
+                    "Drain pasta and add to sauce, toss to combine.",
+                    "Garnish with parsley and serve with Parmesan cheese."
+                ]
+            },
+            {
+                id: 6,
+                title: "Fettuccine Alfredo",
+                description: "Rich and creamy pasta with butter, cream, and Parmesan",
+                image: "https://images.unsplash.com/photo-1621647264194-d5c4d1325b46?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.6,
+                tags: ["pasta", "italian", "creamy", "alfredo", "cheese", "butter", "comfort food"],
+                ingredients: [
+                    "400g fettuccine pasta",
+                    "100g butter",
+                    "200ml heavy cream",
+                    "150g Parmesan cheese, grated",
+                    "2 cloves garlic, minced",
+                    "Salt and white pepper",
+                    "Fresh parsley for garnish"
+                ],
+                instructions: [
+                    "Cook fettuccine according to package directions.",
+                    "In a large pan, melt butter over medium heat.",
+                    "Add garlic and cook for 30 seconds.",
+                    "Pour in cream and bring to a gentle simmer.",
+                    "Add half the Parmesan and whisk until melted.",
+                    "Drain pasta and add to sauce, toss to coat.",
+                    "Add remaining cheese, season, and garnish with parsley."
+                ]
+            },
+
+            // Asian Cuisine
+            {
+                id: 7,
                 title: "Thai Green Curry",
                 description: "Aromatic coconut curry with vegetables and herbs",
                 image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400",
@@ -45,6 +198,7 @@ const mockRecipeAPI = {
                 servings: 4,
                 difficulty: "Medium",
                 rating: 4.6,
+                tags: ["thai", "curry", "coconut", "spicy", "vegetables", "asian", "chicken"],
                 ingredients: [
                     "2 tbsp green curry paste",
                     "400ml coconut milk",
@@ -67,7 +221,238 @@ const mockRecipeAPI = {
                 ]
             },
             {
-                id: 3,
+                id: 8,
+                title: "Chicken Fried Rice",
+                description: "Quick and satisfying fried rice with chicken and vegetables",
+                image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400",
+                cookTime: "15 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.4,
+                tags: ["chinese", "fried rice", "chicken", "quick", "asian", "eggs", "vegetables"],
+                ingredients: [
+                    "3 cups cooked rice, preferably day-old",
+                    "300g chicken breast, diced",
+                    "3 eggs, beaten",
+                    "100g mixed vegetables (peas, carrots)",
+                    "3 green onions, chopped",
+                    "3 cloves garlic, minced",
+                    "3 tbsp soy sauce",
+                    "2 tbsp vegetable oil",
+                    "1 tsp sesame oil"
+                ],
+                instructions: [
+                    "Heat 1 tbsp oil in a large wok or skillet over high heat.",
+                    "Add beaten eggs, scramble quickly, and remove from pan.",
+                    "Add remaining oil, then chicken. Cook until golden and cooked through.",
+                    "Add garlic and vegetables, stir-fry for 2 minutes.",
+                    "Add rice, breaking up any clumps with spatula.",
+                    "Add soy sauce and sesame oil, stir-fry for 3-4 minutes.",
+                    "Return eggs to pan, add green onions, and serve hot."
+                ]
+            },
+            {
+                id: 9,
+                title: "Pad Thai",
+                description: "Sweet and tangy Thai stir-fried noodles with shrimp",
+                image: "https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400",
+                cookTime: "25 mins",
+                servings: 4,
+                difficulty: "Medium",
+                rating: 4.7,
+                tags: ["thai", "noodles", "shrimp", "pad thai", "asian", "stir-fry", "tamarind"],
+                ingredients: [
+                    "200g rice noodles",
+                    "300g shrimp, peeled",
+                    "3 eggs",
+                    "100g bean sprouts",
+                    "3 tbsp tamarind paste",
+                    "2 tbsp fish sauce",
+                    "2 tbsp brown sugar",
+                    "2 tbsp vegetable oil",
+                    "Crushed peanuts",
+                    "Lime wedges"
+                ],
+                instructions: [
+                    "Soak rice noodles in warm water until soft.",
+                    "Heat oil in a wok, add shrimp and cook until pink.",
+                    "Push shrimp to one side, scramble eggs in the empty space.",
+                    "Add drained noodles and sauce mixture.",
+                    "Stir-fry for 3-4 minutes until noodles are coated.",
+                    "Add bean sprouts and cook for 1 minute.",
+                    "Garnish with peanuts and serve with lime wedges."
+                ]
+            },
+
+            // Mexican Cuisine
+            {
+                id: 10,
+                title: "Chicken Tacos",
+                description: "Flavorful grilled chicken tacos with fresh toppings",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.6,
+                tags: ["mexican", "tacos", "chicken", "quick", "fresh", "lime", "cilantro"],
+                ingredients: [
+                    "500g chicken breast, sliced",
+                    "8 small corn tortillas",
+                    "1 tsp cumin",
+                    "1 tsp chili powder",
+                    "1 tsp paprika",
+                    "2 limes, juiced",
+                    "1 red onion, diced",
+                    "Fresh cilantro, chopped",
+                    "200g cheese, shredded",
+                    "2 tbsp olive oil"
+                ],
+                instructions: [
+                    "Season chicken with cumin, chili powder, paprika, salt, and pepper.",
+                    "Heat olive oil in a skillet over medium-high heat.",
+                    "Cook chicken for 6-8 minutes until golden and cooked through.",
+                    "Warm tortillas in a dry pan or microwave.",
+                    "Slice chicken and divide among tortillas.",
+                    "Top with diced onion, cilantro, and cheese.",
+                    "Serve with lime wedges and enjoy immediately."
+                ]
+            },
+
+            // Indian Cuisine
+            {
+                id: 11,
+                title: "Chicken Tikka Masala",
+                description: "Creamy Indian curry with tender chicken in tomato-based sauce",
+                image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400",
+                cookTime: "40 mins",
+                servings: 4,
+                difficulty: "Medium",
+                rating: 4.8,
+                tags: ["indian", "curry", "chicken", "tikka masala", "creamy", "tomato", "spices"],
+                ingredients: [
+                    "600g chicken breast, cubed",
+                    "200ml heavy cream",
+                    "400g canned tomatoes",
+                    "1 large onion, diced",
+                    "3 cloves garlic, minced",
+                    "1 tbsp ginger, grated",
+                    "2 tsp garam masala",
+                    "1 tsp turmeric",
+                    "1 tsp paprika",
+                    "Basmati rice for serving"
+                ],
+                instructions: [
+                    "Season chicken with half the spices and cook until golden.",
+                    "In same pan, cook onion until soft.",
+                    "Add garlic, ginger, and remaining spices.",
+                    "Add tomatoes and simmer for 15 minutes.",
+                    "Blend sauce until smooth, return to pan.",
+                    "Add chicken and cream, simmer for 10 minutes.",
+                    "Serve over basmati rice with naan bread."
+                ]
+            },
+
+            // Breakfast
+            {
+                id: 12,
+                title: "Fluffy Pancakes",
+                description: "Light and airy pancakes perfect for weekend breakfast",
+                image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.6,
+                tags: ["breakfast", "pancakes", "fluffy", "sweet", "american", "syrup"],
+                ingredients: [
+                    "2 cups all-purpose flour",
+                    "2 tbsp sugar",
+                    "2 tsp baking powder",
+                    "1/2 tsp salt",
+                    "2 large eggs",
+                    "1 3/4 cups milk",
+                    "4 tbsp butter, melted",
+                    "1 tsp vanilla extract",
+                    "Maple syrup for serving"
+                ],
+                instructions: [
+                    "Whisk together flour, sugar, baking powder, and salt.",
+                    "In another bowl, beat eggs, then add milk, melted butter, and vanilla.",
+                    "Pour wet ingredients into dry ingredients, mix until just combined.",
+                    "Heat a lightly greased pan over medium heat.",
+                    "Pour 1/4 cup batter for each pancake.",
+                    "Cook until bubbles form on surface, flip and cook until golden.",
+                    "Serve hot with maple syrup and butter."
+                ]
+            },
+
+            // Seafood
+            {
+                id: 13,
+                title: "Grilled Salmon",
+                description: "Perfectly grilled salmon with lemon and herbs",
+                image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.7,
+                tags: ["seafood", "salmon", "grilled", "healthy", "omega-3", "lemon", "herbs"],
+                ingredients: [
+                    "4 salmon fillets",
+                    "2 lemons, sliced",
+                    "3 tbsp olive oil",
+                    "2 cloves garlic, minced",
+                    "Fresh dill",
+                    "Fresh parsley",
+                    "Salt and pepper",
+                    "Asparagus for serving"
+                ],
+                instructions: [
+                    "Preheat grill to medium-high heat.",
+                    "Mix olive oil, garlic, herbs, salt, and pepper.",
+                    "Brush salmon with herb mixture.",
+                    "Grill salmon for 4-5 minutes per side.",
+                    "Top with lemon slices during last 2 minutes.",
+                    "Cook until fish flakes easily with a fork.",
+                    "Serve with grilled asparagus and lemon wedges."
+                ]
+            },
+
+            // Burgers
+            {
+                id: 14,
+                title: "Classic Beef Burger",
+                description: "Juicy beef burger with fresh toppings and special sauce",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+                cookTime: "20 mins",
+                servings: 4,
+                difficulty: "Easy",
+                rating: 4.7,
+                tags: ["burger", "beef", "american", "grilled", "comfort food", "cheese"],
+                ingredients: [
+                    "500g ground beef (80/20)",
+                    "4 burger buns",
+                    "4 cheese slices",
+                    "1 large tomato, sliced",
+                    "1 onion, sliced",
+                    "Lettuce leaves",
+                    "Pickles",
+                    "Burger sauce or mayo",
+                    "Salt and pepper"
+                ],
+                instructions: [
+                    "Form ground beef into 4 patties, season with salt and pepper.",
+                    "Heat grill or skillet over medium-high heat.",
+                    "Cook patties for 4-5 minutes per side for medium doneness.",
+                    "Add cheese slices in last minute of cooking.",
+                    "Toast burger buns until golden.",
+                    "Assemble burgers with sauce, lettuce, tomato, onion, and pickles.",
+                    "Serve immediately with fries or chips."
+                ]
+            },
+
+            // Desserts
+            {
+                id: 15,
                 title: "Chocolate Lava Cake",
                 description: "Decadent dessert with molten chocolate center",
                 image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
@@ -75,6 +460,7 @@ const mockRecipeAPI = {
                 servings: 2,
                 difficulty: "Hard",
                 rating: 4.9,
+                tags: ["dessert", "chocolate", "cake", "molten", "decadent", "sweet"],
                 ingredients: [
                     "100g dark chocolate, chopped",
                     "100g butter",
@@ -97,17 +483,27 @@ const mockRecipeAPI = {
             }
         ];
 
-        // Simple keyword matching
+        // Simple keyword matching to simulate AI
         const keywords = description.toLowerCase();
-        if (keywords.includes('pizza') || keywords.includes('italian')) {
-            return [recipes[0], ...recipes.slice(1)];
-        } else if (keywords.includes('curry') || keywords.includes('thai')) {
-            return [recipes[1], ...recipes.filter(r => r.id !== 2)];
-        } else if (keywords.includes('dessert') || keywords.includes('chocolate')) {
-            return [recipes[2], ...recipes.filter(r => r.id !== 3)];
+        let filteredRecipes = allRecipes;
+
+        if (keywords.includes('pasta') || keywords.includes('italian')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('pasta') || r.tags.includes('italian'));
+        } else if (keywords.includes('curry') || keywords.includes('thai') || keywords.includes('spicy')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('curry') || r.tags.includes('thai') || r.tags.includes('spicy'));
+        } else if (keywords.includes('dessert') || keywords.includes('chocolate') || keywords.includes('sweet')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('dessert') || r.tags.includes('chocolate') || r.tags.includes('sweet'));
+        } else if (keywords.includes('pizza')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('pizza'));
+        } else if (keywords.includes('mexican')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('mexican'));
+        } else if (keywords.includes('breakfast')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('breakfast'));
+        } else if (keywords.includes('seafood') || keywords.includes('fish')) {
+            filteredRecipes = allRecipes.filter(r => r.tags.includes('seafood') || r.tags.includes('salmon'));
         }
 
-        return recipes;
+        return filteredRecipes.length > 0 ? filteredRecipes.slice(0, 6) : allRecipes.slice(0, 6);
     }
 };
 
@@ -370,9 +766,21 @@ const RecipeFinderApp = () => {
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">
                                 What would you like to cook today?
                             </h2>
-                            <p className="text-gray-600 max-w-2xl mx-auto">
-                                Describe what you're craving and let our AI find the perfect recipes for you.
+                            <p className="text-gray-600 max-w-2xl mx-auto mb-4">
+                                Discover from our collection of 30+ recipes across global cuisines. Get personalized recommendations based on your cravings, dietary preferences, and cooking skill level.
                             </p>
+                            <div className="flex flex-wrap justify-center gap-2 text-sm">
+                                <span className="text-gray-500">Try:</span>
+                                {['pizza margherita', 'quick pasta', 'thai curry', 'chocolate dessert', 'easy chicken', 'mexican tacos'].map((suggestion, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setSearchQuery(suggestion)}
+                                        className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors"
+                                    >
+                                        "{suggestion}"
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="max-w-2xl mx-auto mb-8">
