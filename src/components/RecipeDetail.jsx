@@ -1,85 +1,86 @@
 import React from 'react';
 import { Heart, Clock, Users, ChefHat, Star } from 'lucide-react';
+import './styles/RecipeDetails.css';
 
 export const RecipeDetail = ({ recipe, onClose, isFavorite, onToggleFavorite }) => {
     if (!recipe) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-                <div className="relative">
+        <div className="recipe-detail-overlay">
+            <div className="recipe-detail-modal">
+                <div className="recipe-detail-image-section">
                     <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="w-full h-64 md:h-80 object-cover"
+                        className="recipe-detail-image"
                     />
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 p-2 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white transition-colors"
+                        className="recipe-detail-close-button"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="recipe-detail-close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                     <button
                         onClick={() => onToggleFavorite(recipe)}
-                        className="absolute top-4 left-4 p-2 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white transition-colors"
+                        className="recipe-detail-favorite-button"
                     >
                         <Heart
-                            className={`w-6 h-6 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'}`}
+                            className={`recipe-detail-heart-icon ${isFavorite ? 'recipe-detail-heart-favorite' : ''}`}
                         />
                     </button>
                 </div>
 
-                <div className="p-6 overflow-y-auto max-h-[calc(90vh-16rem)] md:max-h-[calc(90vh-20rem)]">
-                    <div className="flex items-start justify-between mb-4">
+                <div className="recipe-detail-content">
+                    <div className="recipe-detail-header">
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{recipe.title}</h2>
-                            <p className="text-gray-600 mb-4">{recipe.description}</p>
+                            <h2 className="recipe-detail-title">{recipe.title}</h2>
+                            <p className="recipe-detail-description">{recipe.description}</p>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-6 mb-6 text-sm">
-                        <div className="flex items-center gap-2">
-                            <Clock className="w-5 h-5 text-gray-400" />
-                            <span className="font-medium">{recipe.cookTime}</span>
+                    <div className="recipe-detail-meta">
+                        <div className="recipe-detail-meta-item">
+                            <Clock className="recipe-detail-meta-icon" />
+                            <span className="recipe-detail-meta-text">{recipe.cookTime}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Users className="w-5 h-5 text-gray-400" />
-                            <span className="font-medium">{recipe.servings} servings</span>
+                        <div className="recipe-detail-meta-item">
+                            <Users className="recipe-detail-meta-icon" />
+                            <span className="recipe-detail-meta-text">{recipe.servings} servings</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <ChefHat className="w-5 h-5 text-gray-400" />
-                            <span className="font-medium">{recipe.difficulty}</span>
+                        <div className="recipe-detail-meta-item">
+                            <ChefHat className="recipe-detail-meta-icon" />
+                            <span className="recipe-detail-meta-text">{recipe.difficulty}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                            <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                            <span className="font-medium">{recipe.rating}</span>
+                        <div className="recipe-detail-meta-item">
+                            <Star className="recipe-detail-star-icon" />
+                            <span className="recipe-detail-meta-text">{recipe.rating}</span>
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-4">Ingredients</h3>
-                            <ul className="space-y-2">
+                    <div className="recipe-detail-main">
+                        <div className="recipe-detail-section">
+                            <h3 className="recipe-detail-section-title">Ingredients</h3>
+                            <ul className="recipe-detail-ingredients-list">
                                 {recipe.ingredients.map((ingredient, index) => (
-                                    <li key={index} className="flex items-start gap-3">
-                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                                        <span className="text-gray-700">{ingredient}</span>
+                                    <li key={index} className="recipe-detail-ingredient-item">
+                                        <div className="recipe-detail-ingredient-bullet"></div>
+                                        <span className="recipe-detail-ingredient-text">{ingredient}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-4">Instructions</h3>
-                            <ol className="space-y-4">
+                        <div className="recipe-detail-section">
+                            <h3 className="recipe-detail-section-title">Instructions</h3>
+                            <ol className="recipe-detail-instructions-list">
                                 {recipe.instructions.map((instruction, index) => (
-                                    <li key={index} className="flex gap-4">
-                                        <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold flex-shrink-0">
+                                    <li key={index} className="recipe-detail-instruction-item">
+                                        <div className="recipe-detail-instruction-number">
                                             {index + 1}
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed">{instruction}</p>
+                                        <p className="recipe-detail-instruction-text">{instruction}</p>
                                     </li>
                                 ))}
                             </ol>
