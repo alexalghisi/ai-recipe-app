@@ -2,6 +2,10 @@
 
 An intelligent recipe generation application powered by artificial intelligence that creates personalized recipes based on available ingredients, dietary preferences, and cooking constraints.
 
+**Download:** [latest release](https://github.com/alexalghisi/ai-recipe-app/releases/latest)
+
+![ai-recipe-app running](docs/preview.png)
+
 ## Overview
 
 The AI Recipe App leverages advanced AI technologies to help users discover new recipes, reduce food waste, and make cooking more accessible and enjoyable. Simply input your available ingredients, select your preferences, and let AI create the perfect recipe for you.
